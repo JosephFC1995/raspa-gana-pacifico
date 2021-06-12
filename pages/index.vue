@@ -133,7 +133,7 @@ form {
   }
   &-start,
   &-register {
-    background: #f8cd1f;
+    background-color: #f8cd1f;
     color: #06205c;
     * {
       color: #06205c;
