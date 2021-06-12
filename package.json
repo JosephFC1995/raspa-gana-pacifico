@@ -1,0 +1,32 @@
+{
+  "name": "raspa-gana",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "core-js": "^3.8.2",
+    "fibers": "^5.0.0",
+    "lodash": "^4.17.20",
+    "nuxt": "^2.14.12",
+    "party-js": "^1.0.4",
+    "sass": "^1.32.5",
+    "sass-loader": "^10.1.1",
+    "vue-form": "^4.10.3",
+    "vue-scratchable": "^0.3.3",
+    "vue-the-mask": "^0.11.1"
+  },
+  "devDependencies": {
+    "@nuxt/types": "~2.14.0",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/tailwindcss": "^3.4.2",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1"
+  }
+}
