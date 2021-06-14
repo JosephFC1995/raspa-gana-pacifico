@@ -48,23 +48,13 @@ export default {
       this.response = $event
       this.currentWindows++
     },
-    hideAddressBar() {
-      if (
-        document.documentElement.scrollHeight <
-        window.outerHeight / window.devicePixelRatio
-      )
-        document.documentElement.style.height =
-          window.outerHeight / window.devicePixelRatio + 'px'
-      setTimeout(window.scrollTo(1, 1), 0)
-    },
   },
   mounted() {
-    window.addEventListener('load', function () {
-      this.hideAddressBar()
-    })
-    window.addEventListener('orientationchange', function () {
-      this.hideAddressBar()
-    })
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      setTimeout(() => {
+        window.scrollTo(0, 1)
+      }, 1500)
+    }
   },
 }
 </script>
