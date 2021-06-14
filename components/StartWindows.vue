@@ -9,7 +9,7 @@
         <vue-form
           :state="formstate"
           @submit.prevent="onSubmit"
-          class="grid grid-cols-6 gap-1 form-general"
+          class="grid grid-cols-6 gap-1 form-general form--start"
         >
           <validate tag="label" class="form-model col-span-2">
             <select
@@ -151,30 +151,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form-general-select,
-.form-general-input {
-  font-size: 31px !important;
-  height: 60px;
-  border: 1px solid #06205c;
-  border-radius: 10px;
-  text-align: center;
-  background-color: transparent;
-  color: rgb(6 32 92 / 40%);
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  text-align: center;
-  text-align-last: center;
-  -moz-text-align-last: center;
-  &.vf-dirty {
-    color: rgb(6 32 92 / 100%);
-  }
-  &::-ms-expand {
-    display: none;
-  }
-  &::placeholder {
-    text-transform: uppercase;
+.form--start {
+  label {
+    font-size: 31px !important;
+    height: 60px;
+    border: 1px solid #06205c;
+    border-radius: 10px;
     text-align: center;
-    color: rgb(6 31 91 / 40%);
+    background-color: transparent;
+    color: rgb(6 32 92 / 40%);
+    text-align: center;
+    text-align-last: center;
+    text-align: -webkit-center;
+    -moz-text-align-last: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .form-general-select,
+  .form-general-input {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    width: auto;
+    background: none;
+    color: rgb(6 32 92 / 40%);
+    &.vf-dirty {
+      color: rgb(6 32 92 / 100%);
+    }
+    &::-ms-expand {
+      display: none;
+    }
+    &::placeholder {
+      text-transform: uppercase;
+      text-align: center;
+      color: rgb(6 31 91 / 40%);
+    }
   }
 }
 </style>
