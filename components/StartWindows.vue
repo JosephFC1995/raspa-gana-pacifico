@@ -167,6 +167,10 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    &.vf-field-invalid {
+      border-color: red;
+      color: rgba(255, 0, 0, 0.4);
+    }
   }
   .form-general-select,
   .form-general-input {
