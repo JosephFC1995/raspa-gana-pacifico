@@ -118,6 +118,7 @@ export default {
   text-align: center;
   text-align-last: center;
   -moz-text-align-last: center;
+  text-align: -webkit-center;
   &.vf-dirty {
     color: rgb(6 32 92 / 100%);
   }
