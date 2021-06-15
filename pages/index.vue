@@ -78,9 +78,12 @@ body {
   background-image: url('/images/background_body.png');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
-  height: 100vh;
+  background-repeat: no-repeat;
+  min-height: 95vh;
+  height: 95vh;
   font-style: normal;
+  overflow: hidden;
+  background-color: white;
 }
 form {
   select {

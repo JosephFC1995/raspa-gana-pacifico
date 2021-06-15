@@ -167,7 +167,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    &.vf-field-invalid {
+    &.vf-field-submitted.vf-field-invalid-required {
       border-color: red;
       color: rgba(255, 0, 0, 0.4);
     }

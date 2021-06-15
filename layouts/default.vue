@@ -17,7 +17,7 @@
 <style lang="scss">
 .main {
   @apply flex flex-col;
-  height: 100vh;
+  height: 95vh;
   .content--nuxt {
     @apply flex-1  pt-4 pr-4 pl-4;
     .border--nuxt {
