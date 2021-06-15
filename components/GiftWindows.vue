@@ -12,7 +12,7 @@
                   que te invita a disfrutar las cosas <br />
                   simples de la vida.
                 </h4>
-                <h1 class="text-center mb-0 uppercase text-right">
+                <h1 class="mb-0 uppercase text-right">
                   ¡Felicidades! <br />
                   GANASTE UNA PACÍFICO
                 </h1>
@@ -136,15 +136,18 @@ export default {
   }
 }
 .gift {
+  @apply w-full;
+  flex: 0 0 100%;
+  .content {
+    @apply justify-around;
+  }
   &-wrapper {
     color: #9c0525;
-    @apply font-semibold;
+    @apply font-semibold  text-center relative;
     font-family: 'Hudson NY Serif';
     font-weight: normal;
     font-style: normal;
     font-size: 32px;
-    @apply text-center;
-    @apply relative;
     h3 {
       position: absolute;
       top: 50%;
