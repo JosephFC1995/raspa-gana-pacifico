@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      currentWindows: 3,
+      currentWindows: 1,
     }
   },
   methods: {
@@ -129,8 +129,7 @@ form {
   &-windows {
     min-height: var(--size-min-box);
     width: 100%;
-    @apply rounded-lg;
-    @apply mb-5;
+    @apply rounded-lg mb-5;
     background-image: url(/images/back_box.png);
     background-position: bottom right;
     background-repeat: no-repeat;
