@@ -11,15 +11,35 @@
       />
     </div>
     <div class="components-interaction">
+      <div class="loading" :class="[showLoading ? '' : 'hidden']">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <fade-transition mode="out-in">
         <!-- Start -->
         <StartWindows v-if="currentWindows == 0" @next="getYearUser" />
         <!-- Register -->
         <RegisterWindows v-else-if="currentWindows == 1" @next="getDataUser" />
         <!-- Ingresar código -->
-        <InsertCodeWindows v-else-if="currentWindows == 2" @next="getCode" />
+        <InsertCodeWindows
+          v-else-if="currentWindows == 2"
+          @next="getCode"
+          :auth="auth"
+        />
         <!-- Premio -->
-        <GiftWindows v-if="currentWindows == 3" :response="response" />
+        <GiftWindows v-if="currentWindows == 3" :response="responseCode" />
         <!-- Thanks -->
         <!-- <ThanksWindows v-if="currentWindows == 3" /> -->
       </fade-transition>
@@ -29,17 +49,26 @@
 
 <script>
 export default {
+  asyncData({ env }) {
+    return {
+      auth: {
+        username: env.baseUsername,
+        password: env.basePassword,
+      },
+    }
+  },
   head() {
     return {
       title: 'Raspa y Gana Pacifico',
-      response: '',
     }
   },
   data() {
     return {
       currentWindows: 0,
       year: '',
+      showLoading: false,
       form: {},
+      responseCode: null,
     }
   },
   methods: {
@@ -52,11 +81,60 @@ export default {
       this.form.year = this.year
       this.currentWindows++
     },
-    getCode($event) {
-      this.form.idcode = $event
-      if ($event == 3) {
+    async getCode($event) {
+      if ($event.status == 3) {
+        this.$toast.warning(response.Message, {
+          position: 'bottom-center',
+          timeout: 5000,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          pauseOnHover: true,
+          draggable: false,
+          draggablePercent: 0.6,
+          showCloseButtonOnHover: false,
+          hideProgressBar: true,
+          closeButton: false,
+          icon: false,
+          rtl: false,
+        })
         return
       }
+      this.form.idcode = $event.idcode
+      console.log(this.form)
+      this.showLoading = true
+
+      let response = await this.$axios
+        .$post('Registro', this.form, {
+          credentials: true,
+          auth: {
+            username: this.auth.username,
+            password: this.auth.password,
+          },
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      this.showLoading = false
+
+      if (!response || response === '') {
+        this.$toast.error('El código ingresado es inválido.', {
+          position: 'bottom-center',
+          timeout: 5000,
+          closeOnClick: true,
+          pauseOnFocusLoss: false,
+          pauseOnHover: false,
+          draggable: false,
+          draggablePercent: 0.6,
+          showCloseButtonOnHover: false,
+          hideProgressBar: true,
+          closeButton: false,
+          icon: false,
+          rtl: false,
+        })
+
+        return
+      }
+      this.responseCode = $event
       this.currentWindows++
     },
     getResponse($event) {
@@ -82,6 +160,9 @@ export default {
     --size-min-box: 280px;
     font-size: 13px;
   }
+}
+.Vue-Toastification__container {
+  padding: 0 1rem !important;
 }
 * {
   outline: none !important;

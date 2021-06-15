@@ -31,13 +31,14 @@ export default {
 
     modules: ['@nuxtjs/axios'],
 
+    env: {
+        baseUsername: process.env.BASE_USERNAME,
+        basePassword: process.env.BASE_PASSWORD,
+    },
+
     axios: {
         baseURL: process.env.BASE_URL_API,
-        headers: {
-            common: {
-                'X-Authorization': 'dgO9sxkRxFFFAYZ0Z4LfUR5yPXZPMjREow6f4SzSGbPycrp0FhC1FW4YlTWEeUGf',
-            },
-        },
+        headers: {},
     },
 
     build: {},

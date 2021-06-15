@@ -54,9 +54,9 @@
 <script>
 export default {
   props: {
-    gift: {
-      type: String,
-      default: 'Ganaste Una doble malta',
+    auth: {
+      type: Object,
+      default: {},
     },
     response: {
       type: Object,
@@ -82,15 +82,21 @@ export default {
       }
       this.showLoading = true
       let response = await this.$axios
-        .$get(`ValidarCodigo/${this.model.code}`)
+        .$get(`ValidarCodigo/${this.model.code}`, {
+          credentials: true,
+          auth: {
+            username: this.auth.username,
+            password: this.auth.password,
+          },
+        })
         .catch((err) => {
           console.log(err)
           this.$toast.error('El código ingresado es inválido.', {
             position: 'bottom-center',
             timeout: 5000,
             closeOnClick: true,
-            pauseOnFocusLoss: true,
-            pauseOnHover: true,
+            pauseOnFocusLoss: false,
+            pauseOnHover: false,
             draggable: false,
             draggablePercent: 0.6,
             showCloseButtonOnHover: false,
@@ -99,12 +105,49 @@ export default {
             icon: false,
             rtl: false,
           })
+          return
         })
-      this.showLoading = false
 
-      if (!response) {
+      this.showLoading = false
+      if (!response || response === '') {
+        console.log('asdasdasd')
+
+        this.$toast.error('El código ingresado es inválido.', {
+          position: 'bottom-center',
+          timeout: 5000,
+          closeOnClick: true,
+          pauseOnFocusLoss: false,
+          pauseOnHover: false,
+          draggable: false,
+          draggablePercent: 0.6,
+          showCloseButtonOnHover: false,
+          hideProgressBar: true,
+          closeButton: false,
+          icon: false,
+          rtl: false,
+        })
+
         return
       }
+
+      if (response.status == 500) {
+        this.$toast.error(response.detalle, {
+          position: 'bottom-center',
+          timeout: 5000,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          pauseOnHover: true,
+          draggable: false,
+          draggablePercent: 0.6,
+          showCloseButtonOnHover: false,
+          hideProgressBar: true,
+          closeButton: false,
+          icon: false,
+          rtl: false,
+        })
+        return
+      }
+
       this.$emit('next', response)
       // otherwise submit form
     },

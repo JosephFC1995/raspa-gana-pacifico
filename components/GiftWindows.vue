@@ -2,7 +2,7 @@
   <div class="windows-gift">
     <div class="box box-windows box-start box-gift overflow-hidden">
       <div class="box-content-inside">
-        <template v-if="true">
+        <template v-if="response.status == 2">
           <div class="gift winner">
             <div class="content">
               <img src="/images/bote_pacif.png" alt="Botella pacífico" />
