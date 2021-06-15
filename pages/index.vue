@@ -13,14 +13,11 @@
     <div class="components-interaction">
       <fade-transition mode="out-in">
         <!-- Start -->
-        <StartWindows v-if="currentWindows == 0" @next="currentWindows = 1" />
+        <StartWindows v-if="currentWindows == 0" @next="getYearUser" />
         <!-- Register -->
-        <RegisterWindows v-else-if="currentWindows == 1" @next="getResponse" />
+        <RegisterWindows v-else-if="currentWindows == 1" @next="getDataUser" />
         <!-- Ingresar código -->
-        <InsertCodeWindows
-          v-else-if="currentWindows == 2"
-          @next="getResponse"
-        />
+        <InsertCodeWindows v-else-if="currentWindows == 2" @next="getCode" />
         <!-- Premio -->
         <GiftWindows v-if="currentWindows == 3" :response="response" />
         <!-- Thanks -->
@@ -40,10 +37,28 @@ export default {
   },
   data() {
     return {
-      currentWindows: 1,
+      currentWindows: 0,
+      year: '',
+      form: {},
     }
   },
   methods: {
+    getYearUser($event) {
+      this.year = $event
+      this.currentWindows++
+    },
+    getDataUser($event) {
+      this.form = $event
+      this.form.year = this.year
+      this.currentWindows++
+    },
+    getCode($event) {
+      this.form.idcode = $event
+      if ($event == 3) {
+        return
+      }
+      this.currentWindows++
+    },
     getResponse($event) {
       this.response = $event
       this.currentWindows++
@@ -53,7 +68,7 @@ export default {
     if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
       setTimeout(() => {
         window.scrollTo(0, 1)
-        document.body.requestFullscreen()
+        // document.body.requestFullscreen()
       }, 1500)
     }
   },
@@ -237,9 +252,9 @@ form {
   top: 0;
   left: 0;
   right: 0;
-  background: #000;
+  background: #000000cf;
   z-index: 99;
-  border-radius: 1rem;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;

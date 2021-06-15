@@ -8420,6 +8420,11 @@ vue-the-mask@^0.11.1:
   resolved "https://registry.yarnpkg.com/vue-the-mask/-/vue-the-mask-0.11.1.tgz#91ee01008354ae57bccc79bb61b65f32d971d9d5"
   integrity sha512-UquSfnSWejD0zAfcD+3jJ1chUAkOAyoxya9Lxh9acCRtrlmGcAIvd0cQYraWqKenbuZJUdum+S174atv2AuEHQ==
 
+vue-toastification@^1.7.11:
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/vue-toastification/-/vue-toastification-1.7.11.tgz#3e46157b7361f5005b1a60112bc91f5bd00c66d7"
+  integrity sha512-CT/DYttb/VtWDNdhJG0BskLVfveZq5rGOgO/u3qTX+RPQQzX0WSai8VVxxUuvR8UpxfSGPS+JQleR33bo3Vadg==
+
 vue@^2.6.12:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"

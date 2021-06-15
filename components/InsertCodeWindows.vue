@@ -1,6 +1,22 @@
 <template>
   <div class="windows-start">
     <div class="box box-windows box-start flex items-center justify-center">
+      <div class="loading" :class="[showLoading ? '' : 'hidden']">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
       <div class="box-content-inside">
         <h1 class="text-center">Ingresa tu código</h1>
         <vue-form
@@ -64,7 +80,32 @@ export default {
       if (this.formstate.$invalid) {
         return
       }
-      this.$emit('next')
+      this.showLoading = true
+      let response = await this.$axios
+        .$get(`ValidarCodigo/${this.model.code}`)
+        .catch((err) => {
+          console.log(err)
+          this.$toast.error('El código ingresado es inválido.', {
+            position: 'bottom-center',
+            timeout: 5000,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: false,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: true,
+            closeButton: false,
+            icon: false,
+            rtl: false,
+          })
+        })
+      this.showLoading = false
+
+      if (!response) {
+        return
+      }
+      this.$emit('next', response)
       // otherwise submit form
     },
   },

@@ -112,7 +112,10 @@ export default {
         this.$refs.validYears.style.color = 'red'
         return
       }
-      this.$emit('next')
+      this.$emit(
+        'next',
+        this.model.day + '-' + this.model.month + '-' + this.model.year
+      )
       // otherwise submit form
     },
     calculateAdult(birthDate) {

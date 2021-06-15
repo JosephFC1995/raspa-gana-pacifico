@@ -21,6 +21,7 @@ export default {
     plugins: [
         '~/plugins/vue-form',
         '~/plugins/vue-the-mask',
+        '~/plugins/vue-toast',
         // '~/plugins/vue-scratchable',
     ],
 

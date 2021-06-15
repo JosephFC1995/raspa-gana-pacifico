@@ -131,11 +131,12 @@ export default {
         return
       }
       this.showLoading = true
-      // let newForm = {
-      //   nombre: this.model.name,
-      //   correo: this.model.email,
-      //   telefono: this.model.phone,
-      // }
+      let newForm = {
+        name: this.model.name,
+        last_name: this.model.last_name,
+        email: this.model.email,
+        phone: this.model.phone,
+      }
       // let response = await this.$axios
       //   .$post('formulario', newForm)
       //   .catch((err) => {
@@ -147,7 +148,7 @@ export default {
       // if (!response) {
       //   return
       // }
-      this.$emit('next', null)
+      this.$emit('next', newForm)
       // otherwise submit form
     },
     customValidatorEmail: function (value) {
@@ -159,9 +160,7 @@ export default {
       // return true to set input as $valid, false to set as $invalid
     },
   },
-  async mounted() {
-    this.array_restaurant = await this.$axios.$get('/restaurant')
-  },
+  async mounted() {},
 }
 </script>
 
@@ -178,7 +177,10 @@ export default {
   &-checkbox {
     font-size: 12px;
     &.vf-field-invalid {
-      color: #9c0525 !important;
+      input,
+      span {
+        color: red !important;
+      }
     }
   }
   &-general {
