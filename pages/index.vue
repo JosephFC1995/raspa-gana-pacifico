@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      currentWindows: 1,
+      currentWindows: 3,
     }
   },
   methods: {

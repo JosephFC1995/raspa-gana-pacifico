@@ -12,7 +12,10 @@
                   que te invita a disfrutar las cosas <br />
                   simples de la vida.
                 </h4>
-                <h1 class="text-center mb-0 uppercase">GANASTE UNA PACÍFICO</h1>
+                <h1 class="text-center mb-0 uppercase text-right">
+                  ¡Felicidades! <br />
+                  GANASTE UNA PACÍFICO
+                </h1>
               </div>
             </div>
           </div>
@@ -94,6 +97,7 @@ export default {
       height: 100%;
       min-height: var(--size-min-box);
       padding-right: 5px !important;
+      padding-left: 2px !important;
       @media (max-width: 320px) {
         padding-left: 9px !important;
       }
@@ -101,7 +105,7 @@ export default {
         &.winner {
           .content {
             display: flex;
-            @apply gap-3;
+            @apply gap-1;
             img {
               height: 220px;
               @media (max-width: 320px) {

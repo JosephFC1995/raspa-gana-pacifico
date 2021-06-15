@@ -2,7 +2,7 @@
   <div class="windows-start">
     <div class="box box-windows box-start flex items-center justify-center">
       <div class="box-content-inside">
-        <h1 class="text-center mb-4">Ingresa tu código</h1>
+        <h1 class="text-center">Ingresa tu código</h1>
         <vue-form
           :state="formstate"
           @submit.prevent="onSubmit"
@@ -80,11 +80,12 @@ export default {
     display: flex;
     flex-direction: column;
     min-height: var(--size-min-box);
+    justify-content: center;
   }
 }
 .form {
   &-general {
-    flex: 1;
+    // flex: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
