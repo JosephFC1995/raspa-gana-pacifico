@@ -79,8 +79,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 95vh;
-  height: 95vh;
+  min-height: 100vh;
+  height: 100vh;
   font-style: normal;
   overflow: hidden;
   background-color: white;
