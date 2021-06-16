@@ -72,11 +72,11 @@ export default {
     }
   },
   methods: {
-    getDateUser($event) {
+    getBirthdayUser($event) {
       this.birthday = $event
       this.currentWindows++
     },
-    getBirthdayUser($event) {
+    getDataUser($event) {
       this.form = $event
       this.form.birthday = this.birthday
       this.currentWindows++
