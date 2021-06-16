@@ -108,6 +108,12 @@
 
 <script>
 export default {
+  props: {
+    birtday: {
+      type: String,
+      default: '',
+    },
+  },
   data() {
     return {
       formstate: {},
