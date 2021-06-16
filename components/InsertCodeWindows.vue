@@ -110,8 +110,6 @@ export default {
 
       this.showLoading = false
       if (!response || response === '') {
-        console.log('asdasdasd')
-
         this.$toast.error('El código ingresado es inválido.', {
           position: 'bottom-center',
           timeout: 5000,
