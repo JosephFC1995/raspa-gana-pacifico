@@ -85,20 +85,25 @@ export default {
     },
     async getCode($event) {
       if ($event.status == 3) {
-        this.$toast.warning($event.Message, {
-          position: 'bottom-center',
-          timeout: 5000,
-          closeOnClick: true,
-          pauseOnFocusLoss: true,
-          pauseOnHover: true,
-          draggable: false,
-          draggablePercent: 0.6,
-          showCloseButtonOnHover: false,
-          hideProgressBar: true,
-          closeButton: false,
-          icon: false,
-          rtl: false,
-        })
+        this.$toast.warning(
+          $event.Message
+            ? $event.Message
+            : 'El código ingresado ya ha sido utilizado',
+          {
+            position: 'bottom-center',
+            timeout: 5000,
+            closeOnClick: true,
+            pauseOnFocusLoss: true,
+            pauseOnHover: true,
+            draggable: false,
+            draggablePercent: 0.6,
+            showCloseButtonOnHover: false,
+            hideProgressBar: true,
+            closeButton: false,
+            icon: false,
+            rtl: false,
+          }
+        )
         return
       }
       this.form.idcode = $event.idcode
