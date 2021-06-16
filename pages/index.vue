@@ -29,7 +29,7 @@
       </div>
       <fade-transition mode="out-in">
         <!-- Start -->
-        <StartWindows v-if="currentWindows == 0" @next="getYearUser" />
+        <StartWindows v-if="currentWindows == 0" @next="getBirthdayUser" />
         <!-- Register -->
         <RegisterWindows v-else-if="currentWindows == 1" @next="getDataUser" />
         <!-- Ingresar código -->
@@ -65,20 +65,20 @@ export default {
   data() {
     return {
       currentWindows: 0,
-      year: '',
+      birthday: '',
       showLoading: false,
       form: {},
       responseCode: null,
     }
   },
   methods: {
-    getYearUser($event) {
-      this.year = $event
+    getDateUser($event) {
+      this.birthday = $event
       this.currentWindows++
     },
-    getDataUser($event) {
+    getBirthdayUser($event) {
       this.form = $event
-      this.form.year = this.year
+      this.form.birthday = this.birthday
       this.currentWindows++
     },
     async getCode($event) {
