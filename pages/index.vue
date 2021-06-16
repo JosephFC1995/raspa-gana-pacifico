@@ -83,7 +83,7 @@ export default {
     },
     async getCode($event) {
       if ($event.status == 3) {
-        this.$toast.warning(response.Message, {
+        this.$toast.warning($event.Message, {
           position: 'bottom-center',
           timeout: 5000,
           closeOnClick: true,
@@ -100,7 +100,6 @@ export default {
         return
       }
       this.form.idcode = $event.idcode
-      console.log(this.form)
       this.showLoading = true
 
       let response = await this.$axios
@@ -109,6 +108,11 @@ export default {
           auth: {
             username: this.auth.username,
             password: this.auth.password,
+          },
+          headers: {
+            Authorization:
+              'Basic cmNhc3RpbGxvOlVFKjA1N3l5JTBsWFZlWmhmaCZNMF5JXkRvaFVsbEBNb2k2Y3Joa152ZFdSTkF2bG1l',
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
         })
         .catch((err) => {

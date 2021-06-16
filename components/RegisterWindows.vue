@@ -139,7 +139,7 @@ export default {
       this.showLoading = true
       let newForm = {
         name: this.model.name,
-        last_name: this.model.last_name,
+        lastname: this.model.last_name,
         email: this.model.email,
         phone: this.model.phone,
       }

@@ -21,12 +21,12 @@
           </div>
         </template>
         <template v-else>
-          <dif class="gift lose">
+          <div class="gift lose">
             <h1 class="text-center mb-0 uppercase">
               sIGUE INTENTANDO <br />
               GRACIAS POR PARTICIPAR
             </h1>
-          </dif>
+          </div>
         </template>
       </div>
     </div>
@@ -80,7 +80,9 @@ export default {
   mounted() {
     let t = this
     setTimeout(() => {
-      t.showParty()
+      if (t.response.status == 2) {
+        t.showParty()
+      }
     }, 1500)
   },
 }

@@ -146,6 +146,24 @@ export default {
         return
       }
 
+      if (response.status == 1) {
+        this.$toast.info('El código ingresado ya ha sido utilizado', {
+          position: 'bottom-center',
+          timeout: 5000,
+          closeOnClick: true,
+          pauseOnFocusLoss: true,
+          pauseOnHover: true,
+          draggable: false,
+          draggablePercent: 0.6,
+          showCloseButtonOnHover: false,
+          hideProgressBar: true,
+          closeButton: false,
+          icon: false,
+          rtl: false,
+        })
+        return
+      }
+
       this.$emit('next', response)
       // otherwise submit form
     },
