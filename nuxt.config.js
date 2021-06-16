@@ -34,6 +34,8 @@ export default {
     env: {
         baseUsername: process.env.BASE_USERNAME,
         basePassword: process.env.BASE_PASSWORD,
+        baseAuthentication: process.env.BASE_AUTHENTICATION,
+        baseURL: process.env.BASE_URL_API,
     },
 
     axios: {

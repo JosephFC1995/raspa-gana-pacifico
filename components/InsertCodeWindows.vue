@@ -105,12 +105,13 @@ export default {
             icon: false,
             rtl: false,
           })
+
           return
         })
 
       this.showLoading = false
-      if (!response || response === '') {
-        this.$toast.error('El código ingresado es inválido.', {
+      if (!response) {
+        this.$toast.error('El código ingresado es inválido...', {
           position: 'bottom-center',
           timeout: 5000,
           closeOnClick: true,

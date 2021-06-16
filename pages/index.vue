@@ -54,6 +54,8 @@ export default {
       auth: {
         username: env.baseUsername,
         password: env.basePassword,
+        baseURL: env.baseURL,
+        authentication: env.baseAuthentication,
       },
     }
   },
@@ -102,25 +104,51 @@ export default {
       this.form.idcode = $event.idcode
       this.showLoading = true
 
-      let response = await this.$axios
-        .$post('Registro', this.form, {
-          credentials: true,
-          auth: {
-            username: this.auth.username,
-            password: this.auth.password,
-          },
-          headers: {
-            Authorization:
-              'Basic cmNhc3RpbGxvOlVFKjA1N3l5JTBsWFZlWmhmaCZNMF5JXkRvaFVsbEBNb2k2Y3Joa152ZFdSTkF2bG1l',
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+      // let response = await this.$axios
+      //   .$post('Registro', this.form, {
+      //     credentials: true,
+      //     auth: {
+      //       username: this.auth.username,
+      //       password: this.auth.password,
+      //     },
+      //     headers: {
+      //       Authorization:
+      //         'Basic ' + this.auth.authentication,
+      //       'Content-Type': 'application/x-www-form-urlencoded',
+      //     },
+      //   })
+      //   .catch((err) => {
+      //     console.log(err)
+      //   })
+
+      var myHeaders = new Headers()
+      myHeaders.append('Authorization', 'Basic ' + this.auth.authentication)
+      myHeaders.append('Content-Type', 'application/x-www-form-urlencoded')
+
+      var urlencoded = new URLSearchParams()
+      urlencoded.append('birthday', this.form.birthday)
+      urlencoded.append('name', this.form.name)
+      urlencoded.append('lastname', this.form.lastname)
+      urlencoded.append('email', this.form.email)
+      urlencoded.append('phone', this.form.phone)
+      urlencoded.append('idcode', this.form.idcode)
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: 'follow',
+      }
+
+      let response = await fetch(`${this.auth.baseURL}Registro`, requestOptions)
+        .then((response) => {
+          return response.json()
         })
-        .catch((err) => {
-          console.log(err)
-        })
+        .catch((error) => console.log('error', error))
+
       this.showLoading = false
 
-      if (!response || response === '') {
+      if (!response) {
         this.$toast.error('El código ingresado es inválido.', {
           position: 'bottom-center',
           timeout: 5000,

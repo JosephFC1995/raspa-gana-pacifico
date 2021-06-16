@@ -2,7 +2,7 @@
   <div class="windows-gift">
     <div class="box box-windows box-start box-gift overflow-hidden">
       <div class="box-content-inside">
-        <template v-if="response.status == 2">
+        <template v-if="response.status == 1">
           <div class="gift winner">
             <div class="content">
               <img src="/images/bote_pacif.png" alt="Botella pacífico" />
@@ -80,7 +80,7 @@ export default {
   mounted() {
     let t = this
     setTimeout(() => {
-      if (t.response.status == 2) {
+      if (t.response.status == 1) {
         t.showParty()
       }
     }, 1500)
