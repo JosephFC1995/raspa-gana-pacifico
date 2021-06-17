@@ -251,8 +251,7 @@ form {
   }
 }
 .logo {
-  @apply mb-10;
-  @apply mx-auto;
+  @apply mb-10 mx-auto;
 
   @media (max-width: 320px) {
     height: 65px;
