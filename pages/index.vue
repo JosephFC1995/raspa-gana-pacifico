@@ -215,7 +215,6 @@ body {
   min-height: 100vh;
   height: 100vh;
   font-style: normal;
-  overflow: hidden;
   background-color: white;
 }
 form {
