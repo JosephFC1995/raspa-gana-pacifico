@@ -182,7 +182,7 @@ export default {
   mounted() {
     if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
       setTimeout(() => {
-        window.scrollTo(0, 1)
+        // window.scrollTo(0, 1)
         // document.body.requestFullscreen()
       }, 1500)
     }
