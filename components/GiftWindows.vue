@@ -16,6 +16,7 @@
                   ¡Felicidades! <br />
                   GANASTE UNA PACÍFICO
                 </h1>
+                <h4 class="code">Código: {{ code }}</h4>
               </div>
             </div>
           </div>
@@ -23,7 +24,7 @@
         <template v-else>
           <div class="gift lose">
             <h1 class="text-center mb-0 uppercase">
-              sIGUE INTENTANDO <br />
+              SIGUE INTENTANDO <br />
               GRACIAS POR PARTICIPAR
             </h1>
           </div>
@@ -49,6 +50,10 @@ export default {
     response: {
       type: Object,
       default: null,
+    },
+    code: {
+      type: String,
+      default: '',
     },
   },
   data() {
@@ -121,6 +126,10 @@ export default {
                 font-size: 13px;
                 @media (max-width: 320px) {
                   font-size: 12px;
+                }
+                &.code {
+                  text-align: right;
+                  font-size: 13px;
                 }
               }
               h1 {

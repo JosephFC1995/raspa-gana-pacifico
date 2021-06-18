@@ -165,6 +165,7 @@ export default {
       //   return
       // }
 
+      this.$emit('code', this.model.code)
       this.$emit('next', response)
       // otherwise submit form
     },

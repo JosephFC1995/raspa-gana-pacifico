@@ -36,10 +36,15 @@
         <InsertCodeWindows
           v-else-if="currentWindows == 2"
           @next="getCode"
+          @code="setCode"
           :auth="auth"
         />
         <!-- Premio -->
-        <GiftWindows v-if="currentWindows == 3" :response="responseCode" />
+        <GiftWindows
+          v-if="currentWindows == 3"
+          :response="responseCode"
+          :code="code"
+        />
         <!-- Thanks -->
         <!-- <ThanksWindows v-if="currentWindows == 3" /> -->
       </fade-transition>
@@ -70,10 +75,14 @@ export default {
       birthday: '',
       showLoading: false,
       form: {},
+      code: '',
       responseCode: null,
     }
   },
   methods: {
+    setCode($event) {
+      this.code = $event
+    },
     getBirthdayUser($event) {
       this.birthday = $event
       this.currentWindows++
