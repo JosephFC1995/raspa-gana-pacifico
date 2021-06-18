@@ -71,7 +71,7 @@ export default {
   },
   data() {
     return {
-      currentWindows: 0,
+      currentWindows: 3,
       birthday: '',
       showLoading: false,
       form: {},

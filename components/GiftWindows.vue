@@ -15,8 +15,8 @@
                 <h1 class="mb-0 uppercase text-right">
                   ¡Felicidades! <br />
                   GANASTE UNA PACÍFICO
+                  <h4 class="code">Código: {{ code }}</h4>
                 </h1>
-                <h4 class="code">Código: {{ code }}</h4>
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default {
               }
               h1 {
                 font-size: 24px;
-                @apply flex flex-col items-center flex-1 justify-center;
+                @apply flex flex-col flex-1 justify-center;
                 @media (max-width: 320px) {
                   font-size: 20px;
                 }
